@@ -3,7 +3,7 @@ add_library(skeletonOS INTERFACE)
 set(LOG_USE_COLOR 1)
 
 set(SCHEDULER_MAX_PROCESSES 32)
-set(SCHEDULER_MAX_CORE 2)
+set(SCHEDULER_MAX_INSTANCE 2)
 set(SKELETON_VERSION v1.0)
 
 target_sources(skeletonOS INTERFACE
