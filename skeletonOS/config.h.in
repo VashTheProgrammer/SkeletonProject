@@ -1,0 +1,14 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// define your version_libinterface
+#define SKELETON_VERSION "@SKELETON_VERSION@"
+
+//LOGGER
+#define LOG_USE_COLOR @LOG_USE_COLOR@
+
+//SCHEDULER
+#define SCHEDULER_MAX_PROCESSES @SCHEDULER_MAX_PROCESSES@
+#define SCHEDULER_MAX_CORE @SCHEDULER_MAX_CORE@
+
+#endif // CMAKE_H
