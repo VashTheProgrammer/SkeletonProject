@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(skeletonExample C CXX)
+project(helloWorld C CXX)
 
 set(CMAKE_C_COMPILER "gcc")
 set(CMAKE_CXX_COMPILER "/usr/bin/g++")
@@ -15,10 +15,10 @@ add_compile_options(
 
 add_subdirectory(../skeletonOS build)
 
-add_executable(skeletonExample
+add_executable(helloWorld
     helloWorld.c
 )
 
-target_link_libraries(skeletonExample 
+target_link_libraries(helloWorld 
     skeletonOS
 )

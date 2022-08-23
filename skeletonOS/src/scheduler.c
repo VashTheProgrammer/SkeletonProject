@@ -6,14 +6,14 @@
 #include "config.h"
 #include "porting.h"
 
-static struct pcb processlist[SCHEDULER_MAX_CORE][SCHEDULER_MAX_PROCESSES];
+static struct pcb processlist[SCHEDULER_MAX_INSTANCE][SCHEDULER_MAX_PROCESSES];
 
 int process_attach(uint8_t instance, uint32_t period, void *function)
 {
 	uint8_t i = 0;
 	int ret = -1;
 
-	if (instance > SCHEDULER_MAX_CORE)
+	if (instance > SCHEDULER_MAX_INSTANCE)
 	{
 		log_warn("attach process pid: %d at core %d is not valid!", i, instance);
 		return ret;
