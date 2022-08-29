@@ -6,7 +6,7 @@
 #define TASK_PUSH_PERIOD 5 * 1000 * 1000
 #define TASK_POP_PERIOD 1 * 1000 * 1000
 
-#define CBUF_HFDATA_SIZE 1024
+#define CBUF_DATA_SIZE 1024
 
 struct Element
 {
@@ -14,12 +14,8 @@ struct Element
 	uint64_t timestamp;
 };
 
-
-
-circ_gbuf_t cBufHFData;
-CIRC_GBUF_DEF(struct Element, cBufHFData, CBUF_HFDATA_SIZE);
-
-
+circ_gbuf_t cBufData;
+CIRC_GBUF_DEF(struct Element, cBufData, CBUF_DATA_SIZE);
 
 int test(uint8_t pid)
 {
@@ -49,7 +45,7 @@ int cBuf_Push(uint8_t pid)
         element.timestamp = getMillisTime();
         element.value = rand();
 
-        if (CIRC_GBUF_PUSH(cBufHFData, &element) == 0)
+        if (CIRC_GBUF_PUSH(cBufData, &element) == 0)
 	    	{
 	    		printf("Push: %d at: %u\n", element.value, element.timestamp);
 	    	}
@@ -62,7 +58,7 @@ int cBuf_Pop(uint8_t pid)
 {
     struct Element element;
 
-    if (CIRC_GBUF_POP(cBufHFData, &element) == 0)
+    if (CIRC_GBUF_POP(cBufData, &element) == 0)
 		{
             printf("Pop: %d at: %u\n", element.value, element.timestamp);
         }
@@ -74,7 +70,7 @@ int main()
 {
     log_info("Skeleton %s starting...\n", SKELETON_VERSION);
 
-    CIRC_GBUF_FLUSH(cBufHFData);
+    CIRC_GBUF_FLUSH(cBufData);
 
     PROCESS_ATTACH(SCHEDULER_INSTANCE, TASK1_PERIOD, test);
     PROCESS_ATTACH(SCHEDULER_INSTANCE, TASK2_PERIOD, logger_test);
