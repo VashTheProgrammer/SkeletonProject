@@ -9,5 +9,6 @@
 #include "scheduler.h"
 #include "uuid4.h"
 #include "config.h"
+#include "porting.h"
 
 #endif // !SKELETONOS
