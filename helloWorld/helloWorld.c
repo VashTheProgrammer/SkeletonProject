@@ -43,7 +43,10 @@ int cBuf_Push(uint8_t pid)
     for(int i = 0; i < 5; i++)
     {
         element.timestamp = getMillisTime();
-        element.value = rand();
+        element.value = rnd();
+
+        int slotFull = CBUF_DATA_SIZE - CIRC_GBUF_FS(cBufData);
+	    log_trace("cBuf slot full: %d", slotFull);
 
         if (CIRC_GBUF_PUSH(cBufData, &element) == 0)
 	    	{

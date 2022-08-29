@@ -7,6 +7,8 @@ extern uint64_t getMicrosecTime();
 
 extern uint64_t getMillisTime();
 
+extern uint32_t rnd();
+
 extern void hardwareSchedulerRun();
 
 #endif // !FSM_H_
